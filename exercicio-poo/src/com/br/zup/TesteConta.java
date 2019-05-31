@@ -1,7 +1,5 @@
 package com.br.zup;
 
-import br.com.zup.modelo.Conta;
-
 public class TesteConta {
 
 	public static void main(String[] args) {
@@ -19,10 +17,10 @@ public class TesteConta {
 		
 		conta1.saldo();
 		
-		conta1.sacar(50);
+		conta1.sacar(300);
 		
 		conta1.saldo();
 		
-		conta1.transferir(100, contaDele);
+		conta1.transferir(280, contaDele);
 	}
 }

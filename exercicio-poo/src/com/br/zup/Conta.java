@@ -1,15 +1,13 @@
-package br.com.zup.modelo;
-
-import com.br.zup.ContaInterface;
+package com.br.zup;
 
 public class Conta implements ContaInterface {
-	
+
 	// Atributos
 	private String numeroConta;
 	private String banco;
 	private String agencia;
 	private double saldo;
-	
+
 	// Construtor
 	public Conta(String numeroConta, String banco, String agencia,
 			double saldo) {
@@ -19,7 +17,7 @@ public class Conta implements ContaInterface {
 		this.agencia = agencia;
 		this.saldo = saldo;
 	}
-	
+
 	// Gets e Sets
 	public String getNumeroConta() {
 		return numeroConta;
@@ -52,35 +50,37 @@ public class Conta implements ContaInterface {
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
-	
+
 	// toString
 	@Override
 	public String toString() {
-		
+
 		String modelo = "";
 		modelo += "\n - Número Conta -> " + this.getNumeroConta() + "\n";
 		modelo += " -Banco ->" + this.getBanco() + "\n";
 		modelo += " -Agência -> " + this.getAgencia() + "\n";
 		modelo += " -Saldo -> " + this.getSaldo() + "\n";
-		
+
 		return modelo;
 	}
-	
+
 	public void depositar (double moneyDepositado) {
 		double dinTotal = this.getSaldo() + moneyDepositado;
 		this.setSaldo(dinTotal);
 		System.out.println("Voce depositou\n" + moneyDepositado);
-		
-		
-		
+
+
+
 	}
 
 	@Override
 	public void sacar(double valorSaque) {
-	   if ( valorSaque < this.getSaldo()) {
-		   this.setSaldo(this.getSaldo()-valorSaque);
-		   System.out.println("Saque efetuado com sucesso");
-	   }
+		if ( valorSaque < this.getSaldo()) {
+			this.setSaldo(this.getSaldo()-valorSaque);
+			System.out.println("Saque efetuado com sucesso");
+		}else {
+			System.out.println(" Saldo infuciente para sacar");
+		}
 	}
 
 	@Override
@@ -88,16 +88,16 @@ public class Conta implements ContaInterface {
 		System.out.println("Saldo atual\n"+this.getSaldo());	
 	}
 
-	
+
 	@Override
 	public void transferir(double valorTransferencia, Conta conta) {
 		this.setSaldo(this.getSaldo()- valorTransferencia);
 		conta.setSaldo(conta.getSaldo() + valorTransferencia);
-		if (this.getSaldo() > valorTransferencia) {
+		if (valorTransferencia > this.getSaldo() ) {
 			System.out.println(" Saldo insuficiente");
 		}else {
 			System.out.println(" Voce conseguiu transferir com sucesso");
-			
+
 		}
 	}
 }

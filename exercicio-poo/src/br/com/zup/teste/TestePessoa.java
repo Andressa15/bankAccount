@@ -3,8 +3,9 @@ package br.com.zup.teste;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.br.zup.Conta;
+
 import br.com.zup.modelo.Brasileiro;
-import br.com.zup.modelo.Conta;
 
 public class TestePessoa {
 

@@ -1,5 +1,7 @@
 package br.com.zup.modelo;
 
+import com.br.zup.Conta;
+
 public class Brasileiro extends Pessoa {
 	
 	// Atributos
