@@ -1,6 +1,8 @@
 package br.com.zup.modelo;
 
-public class Conta {
+import com.br.zup.ContaInterface;
+
+public class Conta implements ContaInterface {
 	
 	// Atributos
 	private String numeroConta;
@@ -62,5 +64,40 @@ public class Conta {
 		modelo += " -Saldo -> " + this.getSaldo() + "\n";
 		
 		return modelo;
+	}
+	
+	public void depositar (double moneyDepositado) {
+		double dinTotal = this.getSaldo() + moneyDepositado;
+		this.setSaldo(dinTotal);
+		System.out.println("Voce depositou\n" + moneyDepositado);
+		
+		
+		
+	}
+
+	@Override
+	public void sacar(double valorSaque) {
+	   if ( valorSaque < this.getSaldo()) {
+		   this.setSaldo(this.getSaldo()-valorSaque);
+		   System.out.println("Saque efetuado com sucesso");
+	   }
+	}
+
+	@Override
+	public void saldo() {
+		System.out.println("Saldo atual\n"+this.getSaldo());	
+	}
+
+	
+	@Override
+	public void transferir(double valorTransferencia, Conta conta) {
+		this.setSaldo(this.getSaldo()- valorTransferencia);
+		conta.setSaldo(conta.getSaldo() + valorTransferencia);
+		if (this.getSaldo() > valorTransferencia) {
+			System.out.println(" Saldo insuficiente");
+		}else {
+			System.out.println(" Voce conseguiu transferir com sucesso");
+			
+		}
 	}
 }
